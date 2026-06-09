@@ -1,0 +1,212 @@
+{
+  "welcome": {
+    "title": "Vibe-Trading",
+    "tagline": "vibe trading with your professional financial agent team",
+    "hint": "Describe a trading strategy to get started.",
+    "tryExample": "Try an example:",
+    "capabilities": [
+      "Finance Skills Library",
+      "Swarm Agent Teams",
+      "Auto-Discovered Tools",
+      "3 Markets: A-Share · Crypto · HK/US",
+      "Trading Connector Profiles",
+      "Minute to Daily Timeframes",
+      "4 Portfolio Optimizers",
+      "15+ Risk Metrics",
+      "Options & Derivatives",
+      "PDF & Web Research",
+      "Factor Analysis & ML",
+      "Trade Journal Analyzer",
+      "Shadow Account Backtest",
+      "Persistent Memory",
+      "Session Search"
+    ],
+    "categories": {
+      "multiMarket": "Multi-Market Backtest",
+      "research": "Research & Analysis",
+      "swarm": "Swarm Teams",
+      "documentWeb": "Document & Web Research",
+      "tradeJournal": "Trade Journal",
+      "tradingConnectors": "Trading Connectors",
+      "shadowAccount": "Shadow Account"
+    },
+    "examples": {
+      "crossMarket": {
+        "title": "Cross-Market Portfolio",
+        "desc": "A-shares + crypto + US equities with risk-parity optimizer"
+      },
+      "btcMacd": {
+        "title": "BTC 5-Min MACD Strategy",
+        "desc": "Minute-level crypto backtest with real-time OKX data"
+      },
+      "usTechMaxDiv": {
+        "title": "US Tech Max Diversification",
+        "desc": "Portfolio optimizer across FAANG+ via yfinance"
+      },
+      "multiFactor": {
+        "title": "Multi-Factor Alpha Model",
+        "desc": "IC-weighted factor synthesis across 300 stocks"
+      },
+      "optionsGreeks": {
+        "title": "Options Greeks Analysis",
+        "desc": "Black-Scholes pricing with Delta/Gamma/Theta/Vega"
+      },
+      "investmentCommittee": {
+        "title": "Investment Committee Review",
+        "desc": "Multi-agent debate: long vs short, risk review, PM decision"
+      },
+      "quantStrategyDesk": {
+        "title": "Quant Strategy Desk",
+        "desc": "Screening → factor research → backtest → risk audit pipeline"
+      },
+      "earningsReport": {
+        "title": "Analyze an Earnings Report PDF",
+        "desc": "Upload a PDF and ask questions about the financials"
+      },
+      "webResearchMacro": {
+        "title": "Web Research: Macro Outlook",
+        "desc": "Read live web sources for macro analysis"
+      },
+      "brokerExport": {
+        "title": "Analyze My Broker Export",
+        "desc": "Parse 同花顺/东财/富途/generic CSV — holding days, win rate, PnL ratio, hourly distribution"
+      },
+      "behaviorBiases": {
+        "title": "Diagnose My Behavior Biases",
+        "desc": "Disposition effect, overtrading, chasing momentum, anchoring — severity + numeric evidence"
+      },
+      "checkConnector": {
+        "title": "Check Selected Connector",
+        "desc": "List connector profiles and verify the selected one"
+      },
+      "connectorPortfolio": {
+        "title": "Analyze Connector Portfolio",
+        "desc": "Read account summary and positions from the selected connector"
+      },
+      "quoteTrend": {
+        "title": "Quote & Trend",
+        "desc": "Fetch a quote plus recent daily bars through the selected connector"
+      },
+      "trainShadow": {
+        "title": "Train My Shadow from Journal",
+        "desc": "Extract your strategy rules from a broker CSV and persist a Shadow profile"
+      },
+      "shadowDelta": {
+        "title": "How Much Am I Leaving on the Table?",
+        "desc": "Backtest your shadow strategy and attribute delta vs. your actual PnL"
+      },
+      "shadowReport": {
+        "title": "Generate Shadow Report",
+        "desc": "8-section HTML/PDF — equity curve, per-market Sharpe, attribution waterfall"
+      }
+    }
+  },
+  "input": {
+    "placeholder": "Describe your trading strategy…",
+    "send": "Send",
+    "stop": "Stop",
+    "attachFile": "Attach file",
+    "uploading": "Uploading…",
+    "swarmMode": "Swarm",
+    "goalMode": "Goal",
+    "connectorRuntime": "Connector runtime",
+    "killSwitch": "Halt",
+    "halted": "Halted",
+    "noConnector": "no connector connected",
+    "connectedCount": "{{count}} connected",
+    "moreOptions": "More options",
+    "checkConnector": "Check Trading Connector",
+    "analyzePortfolio": "Analyze Connector Portfolio"
+  },
+  "streaming": {
+    "agentWorking": "Agent is working…",
+    "toolsRunning": "{{count}} tools running",
+    "step": "Step {{index}}",
+    "etaLeft": "~{{eta}}s left",
+    "moreItems": "… +{{count}} more"
+  },
+  "export": {
+    "chatExport": "Chat Export",
+    "exportTime": "Export time",
+    "user": "User",
+    "assistant": "Assistant",
+    "error": "Error",
+    "toolCall": "Tool call",
+    "swarmStatus": "Swarm status",
+    "backtestComplete": "Backtest complete"
+  },
+  "runComplete": {
+    "fullReport": "Full Report →",
+    "pineScript": "Pine Script",
+    "shadowReport": "Shadow Report"
+  },
+  "goal": {
+    "createGoal": "Create research goal",
+    "goalAttached": "Research goal attached",
+    "goalCancelled": "Research goal cancelled",
+    "goalUpdated": "Research goal updated",
+    "continueGoal": "Continue",
+    "editGoal": "Edit",
+    "cancelGoal": "Cancel goal",
+    "met": "{{met}}/{{total}} met",
+    "continueFailed": "Failed to continue goal, please retry.",
+    "createFailed": "Failed to start goal.",
+    "updateFailed": "Failed to update goal.",
+    "cancelFailed": "Failed to cancel goal."
+  },
+  "connector": {
+    "status": "Connector runtime",
+    "runner": "Runner",
+    "running": "Running",
+    "stopped": "Stopped",
+    "lastTick": "Last tick",
+    "activeMandate": "Active mandate",
+    "limitsUnavailable": "limits unavailable",
+    "noMandate": "No active mandate. Ask the agent to propose one, then commit it before starting the connector runtime.",
+    "runtimeActive": "Runtime active inside mandate",
+    "idle": "Idle",
+    "haltedBanner": "Halted — runner controls disabled",
+    "startRunner": "Start runner",
+    "stopRunner": "Stop runner",
+    "runnerStarted": "Runner started for {{broker}}",
+    "runnerStopped": "Runner stopped for {{broker}}",
+    "runnerControlFailed": "Runner control failed.",
+    "haltedByKillSwitch": "Connector runtime halted — runner stopped, resting orders cancelled",
+    "resumed": "Connector runtime resumed",
+    "halted": "Connector runtime halted",
+    "haltFailed": "Failed to halt connector runtime.",
+    "authorized": "Authorized",
+    "notConnected": "Not connected",
+    "connectProfilePrompt": "Connect this profile to enable connector runtime",
+    "loadingInstructions": "Loading connector authorization instructions...",
+    "fallbackInstruction": "Run `vibe-trading connector list`, choose the broker profile, then run `vibe-trading connector authorize <profile>` from the desktop session that will hold the broker connection.",
+    "connectorNote": "The connector channel stays read-only until OAuth succeeds and a mandate is committed.",
+    "noLeverage": "no leverage",
+    "never": "never",
+    "justNow": "just now",
+    "secondsAgo": "{{s}}s ago",
+    "minutesAgo": "{{m}}m ago",
+    "hoursAgo": "{{h}}h ago",
+    "daysAgo": "{{d}}d ago",
+    "expired": "expired",
+    "expiresIn": "expires in {{label}}",
+    "runningChip": "running",
+    "haltedChip": "halted",
+    "runtimeChip": "RUNTIME"
+  },
+  "swarm": {
+    "headers": {
+      "agent": "Agent",
+      "status": "Status",
+      "tool": "Tool",
+      "time": "Time",
+      "iters": "Iters",
+      "output": "Output"
+    },
+    "waitingForEvents": "Waiting for agent events..."
+  },
+  "toast": {
+    "uploadSuccess": "Uploaded: {{filename}}",
+    "uploadFailed": "Upload failed: {{message}}"
+  }
+}

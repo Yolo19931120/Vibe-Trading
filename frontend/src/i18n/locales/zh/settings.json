@@ -1,0 +1,59 @@
+{
+  "title": "设置",
+  "description": "为此本地项目配置模型凭据和市场数据源令牌。",
+  "localApiAccess": {
+    "title": "本地 API 访问",
+    "description": "在远程或私有 Web 界面部署时，在浏览器中输入一次服务器 API 密钥。本地访问可留空。",
+    "serverApiKey": "服务器 API 密钥",
+    "placeholder": "仅存储在浏览器中，留空以清除。",
+    "saveKey": "保存本地密钥",
+    "storedNote": "仅存储在浏览器中，留空以清除。"
+  },
+  "llmSettings": {
+    "title": "LLM 设置",
+    "description": "选择代理使用的模型并保存到项目本地的 agent/.env 文件中。",
+    "connection": "连接",
+    "generation": "生成",
+    "provider": "提供商",
+    "providerHint": "更改提供商会更新推荐的模型和端点。",
+    "model": "模型",
+    "modelHint": "使用提供商要求的精确模型 ID。",
+    "useDefaults": "使用提供商默认值",
+    "baseUrl": "基础 URL",
+    "apiKey": "API 密钥",
+    "oauth": "OAuth",
+    "clearSavedKey": "清除已保存的 API 密钥",
+    "temperature": "温度",
+    "timeoutSeconds": "超时秒数",
+    "maxRetries": "最大重试次数",
+    "reasoningEffort": "推理深度",
+    "reasoningOff": "关闭",
+    "reasoningHint": "模型回答前的思考深度。越高越全面但越慢；选择「关闭」可获得最快回复。",
+    "savedTo": "保存至",
+    "saveSettings": "保存设置",
+    "savingSettings": "保存中…"
+  },
+  "dataSource": {
+    "title": "数据源设置",
+    "description": "配置回测和研究代理使用的可选市场数据凭据。",
+    "tushareToken": "Tushare 令牌",
+    "tushareHint": "用于 A 股、期货、基金和宏观数据。如未设置，项目将在可用时回退到 AKShare。",
+    "clearTushareToken": "清除已保存的 Tushare 令牌",
+    "savedTo": "保存至",
+    "saveSettings": "保存数据源设置",
+    "savingSettings": "保存中…",
+    "baostock": "BaoStock",
+    "loaderAvailable": "加载器可用",
+    "noLoader": "无项目加载器",
+    "packageInstalled": "Python 包已安装",
+    "packageNotInstalled": "Python 包未安装"
+  },
+  "toast": {
+    "llmSaved": "LLM 设置已保存",
+    "llmSaveFailed": "保存 LLM 设置失败",
+    "dataSaved": "数据源设置已保存",
+    "dataSaveFailed": "保存数据源设置失败",
+    "loadFailed": "加载设置失败",
+    "localKeySaved": "本地 API 密钥已保存"
+  }
+}

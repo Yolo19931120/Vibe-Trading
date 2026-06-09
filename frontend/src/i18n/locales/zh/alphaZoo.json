@@ -1,0 +1,131 @@
+{
+  "browse": {
+    "title": "因子库",
+    "subtitle": "{{total}} 个预构建量化因子，覆盖 4 个因子库",
+    "description": "浏览来自 Qlib、Kakushadze 101、GTJA 191 和学术异常文献的公式化横截面信号。点击任意因子查看公式和源代码，或运行基准测试对整个因子库进行评分。",
+    "search": "搜索",
+    "searchPlaceholder": "按 ID 或别名筛选…",
+    "zoo": "因子库",
+    "theme": "主题",
+    "universe": "股票池",
+    "allZoos": "全部因子库",
+    "allThemes": "全部主题",
+    "allUniverses": "全部股票池",
+    "compare": "对比",
+    "runBenchmark": "运行基准测试",
+    "loading": "正在加载因子…",
+    "noMatch": "没有匹配当前筛选条件的因子。",
+    "showing": "显示 {{shown}} / {{total}}",
+    "loadMore": "加载更多",
+    "selectForCompare": "选择以对比",
+    "id": "ID",
+    "decay": "衰减（天）",
+    "selectHint": "勾选 2 个以上因子后进行对比"
+  },
+  "detail": {
+    "backToZoo": "返回因子库",
+    "runBenchmark": "运行基准测试",
+    "formula": "公式",
+    "noFormula": "（未提供公式）",
+    "metadata": "元数据",
+    "theme": "主题",
+    "universe": "股票池",
+    "frequency": "频率",
+    "decayHorizon": "衰减周期",
+    "minWarmupBars": "最小预热期",
+    "requiresSector": "需要行业分类",
+    "modulePath": "模块路径",
+    "notes": "备注",
+    "sourceCode": "源代码",
+    "viewSource": "查看源代码（{{lines}} 行）",
+    "noSource": "（无源码）",
+    "couldNotLoad": "无法加载因子",
+    "loading": "正在加载 {{id}}…"
+  },
+  "bench": {
+    "title": "基准测试运行器",
+    "heading": "对因子库进行评分",
+    "description": "计算所选因子库中每个因子在指定股票池和时间段内的 IC / IR，并将其分类为有效 / 反转 / 无效。",
+    "backToZoo": "返回因子库",
+    "zoo": "因子库",
+    "universe": "股票池",
+    "period": "时间段",
+    "top": "Top",
+    "runBenchmark": "运行基准测试",
+    "running": "运行中…",
+    "submitting": "提交中…",
+    "job": "任务 {{id}}…",
+    "streamError": "基准测试流错误",
+    "done": "已完成",
+    "alive": "有效",
+    "reversed": "反转",
+    "dead": "无效",
+    "skipped": "跳过",
+    "noResult": "暂无结果",
+    "resultsFor": "{{zoo}} 在 {{universe}}（{{period}}）的结果",
+    "topLabel": "按 |IC| 排序前 {{n}}",
+    "top5ByIR": "IR 前 5",
+    "mostReversed": "最反转",
+    "byTheme": "按主题",
+    "noRows": "无数据。",
+    "idColumn": "ID",
+    "icColumn": "IC",
+    "meanIC": "平均 IC",
+    "irColumn": "IR",
+    "categoryColumn": "分类",
+    "downloadCsv": "下载 CSV"
+  },
+  "compareView": {
+    "title": "因子对比",
+    "backToZoo": "返回因子库",
+    "breadcrumb": "因子对比",
+    "description": "仅对您选择的因子在指定股票池和时间段内进行基准测试，按 IC / IR 排名并显示与领先者的差距——当您只关心少数因子时，比测试整个因子库快得多。",
+    "selectAlpha": "-- 选择因子 --",
+    "loading": "加载中…",
+    "noSelection": "选择两个因子进行对比。",
+    "formula": "公式",
+    "metadata": "元数据",
+    "alphaIds": "因子 ID",
+    "nSelected": "（已选 {{n}} 个）",
+    "idsHint": "用逗号或空格分隔 ID。提示：在因子目录中勾选因子后点击\"对比\"可自动填充。",
+    "rankBy": "排序方式",
+    "compare": "对比",
+    "pickAtLeast2": "至少选择 2 个因子。",
+    "enterAtLeast2": "请输入至少 2 个不同的因子 ID 进行对比。",
+    "failedToStart": "启动对比失败"
+  },
+  "compareResult": {
+    "winner": "优胜者：",
+    "summary": "{{n}} 个对比 · 排序方式 {{sort}} · {{universe}} · {{period}}",
+    "nSkipped": "{{n}} 个跳过",
+    "alpha": "因子",
+    "icMean": "IC 均值",
+    "icStd": "IC 标准差",
+    "ir": "IR",
+    "icPositiveRatio": "IC>0",
+    "icPositiveRatioTitle": "IC 为正的周期比例",
+    "icCount": "n",
+    "icCountTitle": "IC 样本数",
+    "delta": "Δ {{sort}}",
+    "deltaTitle": "与 {{sort}} 领先者的差距",
+    "skippedLabel": "跳过："
+  },
+  "zooCards": {
+    "qlib158": {
+      "description": "Microsoft Qlib 的完整 158 特征库，涵盖动量、波动率、成交量和滚动统计信号。"
+    },
+    "alpha101": {
+      "description": "Kakushadze（2015）的 101 个公式化 Alpha；短期横截面信号。"
+    },
+    "gtja191": {
+      "description": "国泰君安证券的 191 个 Alpha；针对中国 A 股市场调优的技术和微观结构信号。"
+    },
+    "academic": {
+      "description": "精选自学术文献的长期有效异常因子（价值、动量、质量、低波动等）。"
+    }
+  },
+  "toast": {
+    "loadFailed": "加载因子失败",
+    "benchFailed": "启动基准测试失败"
+  }
+}

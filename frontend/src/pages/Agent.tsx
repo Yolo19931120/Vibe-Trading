@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, useMemo, useCallback, type FormEvent } from "react";
+import { useTranslation } from "react-i18next";
 import { useSearchParams } from "react-router-dom";
 import { Send, Loader2, ArrowDown, Square, Download, Plus, Paperclip, X, Users, Target, ChevronDown, Pencil, Check, Play, OctagonX, Activity, Ban, CheckCircle2, Landmark } from "lucide-react";
 import { toast } from "sonner";
 import { useAgentStore } from "@/stores/agent";
 import { useSSE } from "@/hooks/useSSE";
-import { ApiError, AUTH_REQUIRED_MESSAGE, api, isAuthRequiredError, type GoalSnapshot, type MandateProposal, type MandateCommitted, type LiveAction, type LiveHalted, type LiveStatus } from "@/lib/api";
+import { ApiError, api, isAuthRequiredError, type GoalSnapshot, type MandateProposal, type MandateCommitted, type LiveAction, type LiveHalted, type LiveStatus } from "@/lib/api";
 import { isReportWorthyRun } from "@/lib/runReports";
 import type { AgentMessage, ToolCallEntry } from "@/types/agent";
 import { AgentAvatar } from "@/components/chat/AgentAvatar";
@@ -253,6 +254,8 @@ export function Agent() {
    * and removes status from the kill-switch visibility condition. */
   const [liveStatusUnavailable, setLiveStatusUnavailable] = useState(false);
 
+  const { t } = useTranslation("agent");
+
   const messages = useAgentStore(s => s.messages);
   const streamingText = useAgentStore(s => s.streamingText);
   const status = useAgentStore(s => s.status);
@@ -304,8 +307,8 @@ export function Agent() {
   useEffect(() => {
     onStatusChange((s) => {
       act().setSseStatus(s);
-      if (s === "reconnecting" && prevSseStatusRef.current === "connected") toast.warning("Connection lost, reconnecting…");
-      else if (s === "connected" && prevSseStatusRef.current === "reconnecting") toast.success("Connection restored");
+      if (s === "reconnecting" && prevSseStatusRef.current === "connected") toast.warning(t("common:toast.connectionLost"));
+      else if (s === "connected" && prevSseStatusRef.current === "reconnecting") toast.success(t("common:toast.connectionRestored"));
       prevSseStatusRef.current = s;
     });
   }, [onStatusChange]);
@@ -334,7 +337,7 @@ export function Agent() {
         setGoalDetailsOpen(false);
         setGoalEditActive(false);
       } else {
-        toast.error(error instanceof Error ? error.message : "Failed to load goal.");
+        toast.error(error instanceof Error ? error.message : t("goal.cancelFailed"));
       }
     }
   }, []);
@@ -642,7 +645,7 @@ export function Agent() {
         // the RunnerStatus panel re-polls so its per-broker rows show "halted".
         setLiveHalted(halted);
         setLiveStatusRefresh((n) => n + 1);
-        toast.warning("Connector runtime halted — runner stopped, resting orders cancelled");
+        toast.warning(t("connector.haltedByKillSwitch"));
       },
 
       "live.resumed": (d) => {
@@ -652,7 +655,7 @@ export function Agent() {
         void d;
         setLiveHalted(null);
         setLiveStatusRefresh((n) => n + 1);
-        toast.success("Connector runtime resumed");
+        toast.success(t("connector.resumed"));
       },
 
       "live.action": (d) => {
@@ -775,7 +778,7 @@ export function Agent() {
     const timer = setInterval(() => {
       if (lastEventRef.current && Date.now() - lastEventRef.current > sseTimeoutMsRef.current && act().status === "streaming") {
         act().setStatus("idle");
-        toast.warning("Execution timed out, automatically stopped");
+        toast.warning(t("common:toast.executionTimedOut"));
       }
     }, 10_000);
     return () => clearInterval(timer);
@@ -793,7 +796,7 @@ export function Agent() {
         setGoalSnapshot(snapshot);
         setGoalComposerActive(false);
         setGoalDetailsOpen(true);
-        toast.success("Research goal attached");
+        toast.success(t("goal.goalAttached"));
         const kickoff = goalKickoffPrompt(prompt);
         act().addMessage({ id: "", type: "user", content: kickoff, timestamp: Date.now() });
         act().setStatus("streaming");
@@ -802,7 +805,7 @@ export function Agent() {
         await api.sendMessage(sid, kickoff);
       } catch (error) {
         act().setStatus("idle");
-        toast.error(error instanceof Error ? error.message : "Failed to start goal.");
+        toast.error(error instanceof Error ? error.message : t("goal.createFailed"));
       }
       return;
     }
@@ -837,7 +840,7 @@ export function Agent() {
       await api.sendMessage(sid, finalPrompt);
     } catch (error) {
       act().setStatus("error");
-      const message = isAuthRequiredError(error) ? AUTH_REQUIRED_MESSAGE : "Failed to send message, please retry.";
+      const message = isAuthRequiredError(error) ? t("common:error.authRequired") : t("common:error.failedToSend");
       toast.error(message);
       act().addMessage({ id: "", type: "error", content: message, timestamp: Date.now() });
     }
@@ -867,9 +870,9 @@ export function Agent() {
       act().setStatus("idle");
       act().clearStreaming();
       useAgentStore.setState({ toolCalls: [] });
-      toast.info("Cancel request sent");
+      toast.info(t("common:toast.cancelSent"));
     } catch {
-      toast.error("Cancel failed");
+      toast.error(t("common:toast.cancelFailed"));
     }
   };
 
@@ -887,9 +890,9 @@ export function Agent() {
       // optimistically and re-poll the runtime panel so the runner shows stopped.
       setLiveHalted((cur) => cur ?? { broker: null, by: "frontend", tripped_at: new Date().toISOString() });
       setLiveStatusRefresh((n) => n + 1);
-      toast.success("Connector runtime halted");
+      toast.success(t("connector.halted"));
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Failed to halt connector runtime.");
+      toast.error(error instanceof Error ? error.message : t("connector.haltFailed"));
     } finally {
       setHalting(false);
     }
@@ -906,9 +909,9 @@ export function Agent() {
       });
       setGoalSnapshot(null);
       setGoalDetailsOpen(false);
-      toast.success("Research goal cancelled");
+      toast.success(t("goal.goalCancelled"));
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Failed to cancel goal.");
+      toast.error(error instanceof Error ? error.message : t("goal.cancelFailed"));
     }
   }, [goalSnapshot, sessionId]);
 
@@ -929,9 +932,9 @@ export function Agent() {
       });
       setGoalSnapshot(response.snapshot);
       setGoalEditActive(false);
-      toast.success("Research goal updated");
+      toast.success(t("goal.goalUpdated"));
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Failed to update goal.");
+      toast.error(error instanceof Error ? error.message : t("goal.updateFailed"));
     }
   }, [goalEditValue, goalSnapshot, sessionId]);
 
@@ -947,7 +950,7 @@ export function Agent() {
       await api.sendMessage(sessionId, prompt);
     } catch (error) {
       act().setStatus("error");
-      const message = isAuthRequiredError(error) ? AUTH_REQUIRED_MESSAGE : "Failed to continue goal, please retry.";
+      const message = isAuthRequiredError(error) ? t("common:error.authRequired") : t("goal.continueFailed");
       toast.error(message);
       act().addMessage({ id: "", type: "error", content: message, timestamp: Date.now() });
     }
@@ -972,7 +975,7 @@ export function Agent() {
 
   const handleExport = () => {
     if (messages.length === 0) return;
-    const lines: string[] = [`# Chat Export`, ``, `Export time: ${new Date().toLocaleString()}`, ``];
+    const lines: string[] = [`# ${t("export.chatExport")}`, ``, `${t("export.exportTime")}: ${new Date().toLocaleString()}`, ``];
     for (const msg of messages) {
       const time = new Date(msg.timestamp).toLocaleString();
       if (msg.type === "user") {
@@ -1009,11 +1012,11 @@ export function Agent() {
     ];
     const lowered = file.name.toLowerCase();
     if (blockedExts.some((ext) => lowered.endsWith(ext))) {
-      toast.error("Executables and archives are not allowed");
+      toast.error(t("common:toast.fileBlocked"));
       return;
     }
     if (file.size > 50 * 1024 * 1024) {
-      toast.error("File size exceeds 50 MB limit");
+      toast.error(t("common:toast.fileTooLarge"));
       return;
     }
     setUploading(true);
@@ -1021,9 +1024,9 @@ export function Agent() {
     try {
       const result = await api.uploadFile(file);
       setAttachment({ filename: result.filename, filePath: result.file_path });
-      toast.success(`Uploaded: ${result.filename}`);
+      toast.success(t("toast.uploadSuccess", { filename: result.filename }));
     } catch (err) {
-      toast.error(`Upload failed: ${err instanceof Error ? err.message : "Unknown error"}`);
+      toast.error(t("toast.uploadFailed", { message: err instanceof Error ? err.message : "Unknown error" }));
     } finally {
       setUploading(false);
     }
@@ -1414,7 +1417,7 @@ export function Agent() {
               {liveIsHalted ? (
                 <span className="inline-flex items-center gap-1.5 rounded-lg bg-destructive/10 px-2.5 py-1 text-xs font-medium text-destructive">
                   <OctagonX className="h-3 w-3" />
-                  Connector runtime halted
+                  {t("connector.halted")}
                 </span>
               ) : (
                 <button

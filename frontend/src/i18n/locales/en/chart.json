@@ -1,0 +1,14 @@
+{
+  "validation": {
+    "title": "Validation",
+    "passed": "Passed",
+    "failed": "Failed",
+    "noResults": "No validation results",
+    "status": "Status",
+    "check": "Check",
+    "details": "Details",
+    "passedAll": "All checks passed",
+    "failedCount": "{{count}} check(s) failed"
+  },
+  "noData": "No data"
+}

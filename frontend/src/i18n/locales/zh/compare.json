@@ -1,0 +1,27 @@
+{
+  "title": "策略对比",
+  "baseline": "基准",
+  "compare": "对比",
+  "select": "-- 选择 --",
+  "equityDrawdown": "权益曲线与回撤",
+  "metric": "指标",
+  "delta": "差值",
+  "selectPrompt": "选择两个运行记录以对比指标。",
+  "metrics": {
+    "totalReturn": "总收益",
+    "annualizedReturn": "年化收益",
+    "sharpeRatio": "夏普比率",
+    "calmarRatio": "卡玛比率",
+    "sortinoRatio": "索提诺比率",
+    "maxDrawdown": "最大回撤",
+    "volatility": "波动率",
+    "winRate": "胜率",
+    "profitFactor": "盈亏因子",
+    "avgWin": "平均盈利",
+    "avgLoss": "平均亏损",
+    "trades": "交易次数",
+    "maxConsecLosses": "最大连续亏损",
+    "exposureTime": "持仓时间",
+    "avgHoldingPeriod": "平均持仓周期"
+  }
+}

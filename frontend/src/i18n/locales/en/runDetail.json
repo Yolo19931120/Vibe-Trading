@@ -1,0 +1,55 @@
+{
+  "notFound": {
+    "title": "Run not found",
+    "description": "The run directory may have been removed, or your browser may not have API access configured. Check that the API authentication key is set in Settings if accessing remotely.",
+    "goBack": "Go back"
+  },
+  "tabs": {
+    "chart": "Chart",
+    "trades": "Trades",
+    "validation": "Validation",
+    "runCard": "Run Card",
+    "code": "Code"
+  },
+  "chart": {
+    "noData": "No chart data available",
+    "noDataHint": "The backtest engine may not have generated price data. Check the artifacts/ directory.",
+    "equityDrawdown": "Equity & Drawdown"
+  },
+  "trades": {
+    "noTrades": "No trades recorded.",
+    "time": "Time",
+    "code": "Code",
+    "side": "Side",
+    "price": "Price",
+    "qty": "Qty",
+    "reason": "Reason"
+  },
+  "code": {
+    "noCode": "No code files."
+  },
+  "runCard": {
+    "schema": "Schema",
+    "generated": "Generated",
+    "dataSources": "Data sources",
+    "warnings": "Warnings",
+    "noneRecorded": "None recorded",
+    "backtestSummary": "Backtest Summary",
+    "noBacktestSummary": "No backtest summary recorded.",
+    "reproducibility": "Reproducibility",
+    "noReproHashes": "No reproducibility hashes recorded.",
+    "metrics": "Metrics",
+    "noScalarMetrics": "No scalar metrics recorded.",
+    "validation": "Validation",
+    "noValidation": "No validation payload recorded.",
+    "artifactChecksums": "Artifact Checksums",
+    "noArtifacts": "No artifact checksums recorded.",
+    "path": "Path",
+    "size": "Size",
+    "sha256": "SHA-256"
+  },
+  "download": {
+    "tradesCsv": "Download Trades CSV",
+    "metricsCsv": "Download Metrics CSV"
+  }
+}

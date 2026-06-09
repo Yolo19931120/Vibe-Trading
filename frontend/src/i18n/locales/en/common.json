@@ -1,0 +1,116 @@
+{
+  "nav": {
+    "home": "Home",
+    "agent": "Agent",
+    "alphaZoo": "Alpha Zoo",
+    "settings": "Settings",
+    "correlationMatrix": "Correlation Matrix"
+  },
+  "sidebar": {
+    "sessions": "Sessions",
+    "newChat": "New Chat",
+    "noSessions": "No sessions yet",
+    "collapse": "Collapse",
+    "expand": "Expand",
+    "rename": "Rename",
+    "delete": "Delete?",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "upload": "Upload",
+    "export": "Export",
+    "close": "Close",
+    "goBack": "Go back",
+    "loading": "Loading…",
+    "loadMore": "Load more",
+    "search": "Search",
+    "filter": "Filter",
+    "reset": "Reset",
+    "copy": "Copy",
+    "copied": "Copied"
+  },
+  "status": {
+    "loading": "Loading…",
+    "error": "Error",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "reconnecting": "Reconnecting…",
+    "saving": "Saving…",
+    "saved": "Saved",
+    "submitting": "Submitting…"
+  },
+  "connection": {
+    "lost": "Connection lost",
+    "lostReconnecting": "Connection lost, reconnecting (attempt {{attempt}})…"
+  },
+  "error": {
+    "somethingWentWrong": "Something went wrong",
+    "executionFailed": "Execution failed",
+    "unknownError": "Unknown error",
+    "failedToSend": "Failed to send message, please retry.",
+    "authRequired": "Remote API access requires an API key. Add it in Settings, or run the backend on localhost for local-only use.",
+    "settingsUnavailable": "Settings are unavailable",
+    "cancelFailed": "Cancel failed",
+    "uploadFailed": "Upload failed"
+  },
+  "toast": {
+    "connectionLost": "Connection lost, reconnecting…",
+    "connectionRestored": "Connection restored",
+    "cancelSent": "Cancel request sent",
+    "cancelFailed": "Cancel failed",
+    "executionTimedOut": "Execution timed out, automatically stopped",
+    "fileBlocked": "Executables and archives are not allowed",
+    "fileTooLarge": "File size exceeds 50 MB limit"
+  },
+  "retry": {
+    "timeout": "Execution timed out. Try simplifying the strategy or reducing the number of assets.",
+    "apiFailed": "API call failed. Please retry later.",
+    "executionFailed": "Execution failed. Click to retry."
+  },
+  "metrics": {
+    "totalReturn": "Total Return",
+    "annualReturn": "Annual",
+    "sharpe": "Sharpe",
+    "maxDrawdown": "Max DD",
+    "winRate": "Win Rate",
+    "tradeCount": "Trades",
+    "finalValue": "Final Value",
+    "calmar": "Calmar",
+    "sortino": "Sortino",
+    "profitLossRatio": "P/L Ratio",
+    "maxConsecLoss": "Max Consec. Loss",
+    "avgHoldDays": "Avg Hold Days",
+    "benchmarkReturn": "Benchmark",
+    "excessReturn": "Excess Return",
+    "informationRatio": "IR"
+  },
+  "tools": {
+    "loadSkill": "Load strategy knowledge",
+    "writeFile": "Generate code",
+    "editFile": "Edit code",
+    "readFile": "Read file",
+    "runBacktest": "Run backtest",
+    "bash": "Run command",
+    "readUrl": "Read webpage",
+    "readDocument": "Read document",
+    "tradingConnections": "List trading connectors",
+    "tradingSelectConnection": "Select trading connector",
+    "tradingCheck": "Check trading connector",
+    "tradingAccount": "Read connector account",
+    "tradingPositions": "Read connector positions",
+    "tradingOrders": "Read connector orders",
+    "tradingQuote": "Read connector quote",
+    "tradingHistory": "Read connector history",
+    "compact": "Summarize conversation",
+    "createTask": "Create task",
+    "updateTask": "Update task",
+    "spawnSubagent": "Spawn sub-agent"
+  }
+}

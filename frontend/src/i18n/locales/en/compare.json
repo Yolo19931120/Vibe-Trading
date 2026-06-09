@@ -1,0 +1,27 @@
+{
+  "title": "Strategy Comparison",
+  "baseline": "Baseline",
+  "compare": "Compare",
+  "select": "-- Select --",
+  "equityDrawdown": "Equity & Drawdown",
+  "metric": "Metric",
+  "delta": "Delta",
+  "selectPrompt": "Select two runs to compare their metrics.",
+  "metrics": {
+    "totalReturn": "Total Return",
+    "annualizedReturn": "Annualized Return",
+    "sharpeRatio": "Sharpe Ratio",
+    "calmarRatio": "Calmar Ratio",
+    "sortinoRatio": "Sortino Ratio",
+    "maxDrawdown": "Max Drawdown",
+    "volatility": "Volatility",
+    "winRate": "Win Rate",
+    "profitFactor": "Profit Factor",
+    "avgWin": "Avg Win",
+    "avgLoss": "Avg Loss",
+    "trades": "Trades",
+    "maxConsecLosses": "Max Consec. Losses",
+    "exposureTime": "Exposure Time",
+    "avgHoldingPeriod": "Avg Holding Period"
+  }
+}

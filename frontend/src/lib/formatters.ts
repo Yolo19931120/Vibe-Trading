@@ -16,6 +16,24 @@ export const METRIC_LABELS: Record<string, string> = {
   information_ratio: "IR",
 };
 
+export const METRIC_I18N_KEYS: Record<string, string> = {
+  total_return: "common:metrics.totalReturn",
+  annual_return: "common:metrics.annualReturn",
+  sharpe: "common:metrics.sharpe",
+  max_drawdown: "common:metrics.maxDrawdown",
+  win_rate: "common:metrics.winRate",
+  trade_count: "common:metrics.tradeCount",
+  final_value: "common:metrics.finalValue",
+  calmar: "common:metrics.calmar",
+  sortino: "common:metrics.sortino",
+  profit_loss_ratio: "common:metrics.profitLossRatio",
+  max_consecutive_loss: "common:metrics.maxConsecLoss",
+  avg_holding_days: "common:metrics.avgHoldDays",
+  benchmark_return: "common:metrics.benchmarkReturn",
+  excess_return: "common:metrics.excessReturn",
+  information_ratio: "common:metrics.informationRatio",
+};
+
 export function getMetricLabel(k: string): string {
   return METRIC_LABELS[k] || k;
 }

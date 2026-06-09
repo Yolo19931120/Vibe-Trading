@@ -1,0 +1,59 @@
+{
+  "title": "Settings",
+  "description": "Configure model credentials and market data source tokens for this local project.",
+  "localApiAccess": {
+    "title": "Local API access",
+    "description": "For remote or private Web UI deployments, enter the server API key once in this browser. Localhost use can stay blank.",
+    "serverApiKey": "Server API key",
+    "placeholder": "Stored only in this browser. Leave blank to clear it.",
+    "saveKey": "Save local key",
+    "storedNote": "Stored only in this browser. Leave blank to clear it."
+  },
+  "llmSettings": {
+    "title": "LLM Settings",
+    "description": "Choose the model used by the agent and save it to the project-local agent/.env file.",
+    "connection": "Connection",
+    "generation": "Generation",
+    "provider": "Provider",
+    "providerHint": "Changing providers updates the recommended model and endpoint.",
+    "model": "Model",
+    "modelHint": "Use the exact model id required by your provider.",
+    "useDefaults": "Use provider defaults",
+    "baseUrl": "Base URL",
+    "apiKey": "API key",
+    "oauth": "OAuth",
+    "clearSavedKey": "Clear saved API key",
+    "temperature": "Temperature",
+    "timeoutSeconds": "Timeout seconds",
+    "maxRetries": "Max retries",
+    "reasoningEffort": "Reasoning effort",
+    "reasoningOff": "Off",
+    "reasoningHint": "How hard the model thinks before answering. Higher is more thorough but slower; leave Off for fastest replies.",
+    "savedTo": "Saved to",
+    "saveSettings": "Save settings",
+    "savingSettings": "Saving…"
+  },
+  "dataSource": {
+    "title": "Data Source Settings",
+    "description": "Configure optional market data credentials used by backtests and research agents.",
+    "tushareToken": "Tushare token",
+    "tushareHint": "Used for China A-share, futures, fund, and macro data. If unset, the project falls back to AKShare where available.",
+    "clearTushareToken": "Clear saved Tushare token",
+    "savedTo": "Saved to",
+    "saveSettings": "Save data source settings",
+    "savingSettings": "Saving…",
+    "baostock": "BaoStock",
+    "loaderAvailable": "Loader available",
+    "noLoader": "No project loader",
+    "packageInstalled": "Python package installed",
+    "packageNotInstalled": "Python package not installed"
+  },
+  "toast": {
+    "llmSaved": "LLM settings saved",
+    "llmSaveFailed": "Failed to save LLM settings",
+    "dataSaved": "Data source settings saved",
+    "dataSaveFailed": "Failed to save data source settings",
+    "loadFailed": "Failed to load settings",
+    "localKeySaved": "Local API key saved"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "browse": {
+    "title": "Alpha Zoo",
+    "subtitle": "{{total}} pre-built quant alphas across 4 zoos",
+    "description": "Browse formula-driven cross-sectional signals from Qlib, the Kakushadze 101 set, GTJA 191, and the academic anomaly literature. Click any alpha to read its formula and source code, or run a bench to score the whole zoo on a universe and period.",
+    "search": "Search",
+    "searchPlaceholder": "Filter by id or nickname…",
+    "zoo": "Zoo",
+    "theme": "Theme",
+    "universe": "Universe",
+    "allZoos": "All zoos",
+    "allThemes": "All themes",
+    "allUniverses": "All universes",
+    "compare": "Compare",
+    "runBenchmark": "Run benchmark",
+    "loading": "Loading alphas…",
+    "noMatch": "No alphas match the current filters.",
+    "showing": "Showing {{shown}} of {{total}}",
+    "loadMore": "Load more",
+    "selectForCompare": "Select for compare",
+    "id": "ID",
+    "decay": "Decay (days)",
+    "selectHint": "Tick 2+ alphas below, then compare them head-to-head"
+  },
+  "detail": {
+    "backToZoo": "Back to Alpha Zoo",
+    "runBenchmark": "Run benchmark",
+    "formula": "Formula",
+    "noFormula": "(no formula provided)",
+    "metadata": "Metadata",
+    "theme": "Theme",
+    "universe": "Universe",
+    "frequency": "Frequency",
+    "decayHorizon": "Decay horizon",
+    "minWarmupBars": "Min warm-up bars",
+    "requiresSector": "Requires sector",
+    "modulePath": "Module path",
+    "notes": "Notes",
+    "sourceCode": "Source code",
+    "viewSource": "View source ({{lines}} lines)",
+    "noSource": "(no source available)",
+    "couldNotLoad": "Could not load alpha",
+    "loading": "Loading {{id}}…"
+  },
+  "bench": {
+    "title": "Benchmark runner",
+    "heading": "Score a zoo on a universe",
+    "description": "Computes IC / IR for every alpha in the selected zoo over the chosen universe and period, then bucketizes them as alive / reversed / dead.",
+    "backToZoo": "Back to Alpha Zoo",
+    "zoo": "Zoo",
+    "universe": "Universe",
+    "period": "Period",
+    "top": "Top",
+    "runBenchmark": "Run benchmark",
+    "running": "Running…",
+    "submitting": "Submitting…",
+    "job": "Job {{id}}…",
+    "streamError": "Bench stream error",
+    "done": "Done",
+    "alive": "Alive",
+    "reversed": "Reversed",
+    "dead": "Dead",
+    "skipped": "Skipped",
+    "noResult": "No result yet",
+    "resultsFor": "Results for {{zoo}} on {{universe}} ({{period}})",
+    "topLabel": "Top {{n}} by |IC|",
+    "top5ByIR": "Top 5 by IR",
+    "mostReversed": "Most reversed",
+    "byTheme": "By theme",
+    "noRows": "No rows.",
+    "idColumn": "ID",
+    "icColumn": "IC",
+    "meanIC": "Mean IC",
+    "irColumn": "IR",
+    "categoryColumn": "Category",
+    "downloadCsv": "Download CSV"
+  },
+  "compareView": {
+    "title": "Compare alphas side by side",
+    "backToZoo": "Back to Alpha Zoo",
+    "breadcrumb": "Head-to-head compare",
+    "description": "Benches just the alphas you pick on a universe and period, then ranks them by IC / IR with the gap to the leader — far faster than benching a whole zoo when you only care about a shortlist.",
+    "selectAlpha": "-- Select alpha --",
+    "loading": "Loading…",
+    "noSelection": "Select two alphas to compare.",
+    "formula": "Formula",
+    "metadata": "Metadata",
+    "alphaIds": "Alpha ids",
+    "nSelected": " ({{n}} selected)",
+    "idsHint": "Separate ids with commas or spaces. Tip: tick alphas in the catalogue and hit \"Compare\" to prefill this.",
+    "rankBy": "Rank by",
+    "compare": "Compare",
+    "pickAtLeast2": "Pick at least 2 alphas.",
+    "enterAtLeast2": "Enter at least 2 distinct alpha ids to compare.",
+    "failedToStart": "Failed to start comparison"
+  },
+  "compareResult": {
+    "winner": "Winner:",
+    "summary": "{{n}} compared · ranked by {{sort}} · {{universe}} · {{period}}",
+    "nSkipped": "{{n}} skipped",
+    "alpha": "Alpha",
+    "icMean": "IC mean",
+    "icStd": "IC std",
+    "ir": "IR",
+    "icPositiveRatio": "IC>0",
+    "icPositiveRatioTitle": "Share of periods with positive IC",
+    "icCount": "n",
+    "icCountTitle": "IC sample count",
+    "delta": "Δ {{sort}}",
+    "deltaTitle": "Gap to the leader on {{sort}}",
+    "skippedLabel": "Skipped:"
+  },
+  "zooCards": {
+    "qlib158": {
+      "description": "Microsoft Qlib's full 158-feature library covering momentum, volatility, volume and rolling statistical signals."
+    },
+    "alpha101": {
+      "description": "The 101 formulaic alphas from Kakushadze (2015); short-horizon cross-sectional signals."
+    },
+    "gtja191": {
+      "description": "Guotai Junan Securities' 191 alphas; technical and microstructure signals tuned to China A-share markets."
+    },
+    "academic": {
+      "description": "Curated long-horizon anomalies from the academic literature (value, momentum, quality, low-vol, etc.)."
+    }
+  },
+  "toast": {
+    "loadFailed": "Failed to load alphas",
+    "benchFailed": "Failed to start bench"
+  }
+}

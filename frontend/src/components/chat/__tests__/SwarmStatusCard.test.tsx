@@ -1,6 +1,8 @@
 // @vitest-environment node
 
 import { renderToStaticMarkup } from "react-dom/server";
+import { I18nextProvider } from "react-i18next";
+import i18n from "@/i18n";
 import { SwarmStatusCard } from "../SwarmStatusCard";
 import {
   applySwarmEvent,
@@ -8,6 +10,10 @@ import {
   buildSwarmStatusFromToolResultPreview,
 } from "@/lib/swarmStatus";
 import type { SwarmRunStatus } from "@/types/agent";
+
+function wrap(ui: React.ReactElement) {
+  return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
+}
 
 function makeStatus(overrides: Partial<SwarmRunStatus> = {}): SwarmRunStatus {
   return {
@@ -30,8 +36,10 @@ function makeStatus(overrides: Partial<SwarmRunStatus> = {}): SwarmRunStatus {
 }
 
 describe("SwarmStatusCard", () => {
+  // Force English locale for Node environment tests (no navigator.language)
+  beforeAll(() => { i18n.changeLanguage("en"); });
   it("renders agent status rows", () => {
-    const html = renderToStaticMarkup(<SwarmStatusCard status={makeStatus()} />);
+    const html = renderToStaticMarkup(wrap(<SwarmStatusCard status={makeStatus()} />));
 
     expect(html).toContain("demo_team");
     expect(html).toContain("running");

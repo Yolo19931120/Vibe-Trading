@@ -1,0 +1,10 @@
+{
+  "title": "Correlation Matrix",
+  "assetCodes": "Asset codes",
+  "assetCodesHint": "Comma-separated ticker symbols, e.g. BTC-USDT,ETH-USDT,AAPL,SPY",
+  "window": "Window (days)",
+  "method": "Method",
+  "compute": "Compute",
+  "computing": "Loading…",
+  "computeError": "Failed to compute correlation"
+}

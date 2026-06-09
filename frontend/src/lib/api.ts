@@ -12,6 +12,8 @@ export class ApiError extends Error {
   }
 }
 
+/** i18n key: common:error.authRequired. Consumers should use t('common:error.authRequired').
+ *  This raw string serves as fallback when i18n context is unavailable. */
 export const AUTH_REQUIRED_MESSAGE =
   "Remote API access requires an API key. Add it in Settings, or run the backend on localhost for local-only use.";
 

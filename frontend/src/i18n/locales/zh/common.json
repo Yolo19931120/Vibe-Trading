@@ -1,0 +1,116 @@
+{
+  "nav": {
+    "home": "首页",
+    "agent": "AI 助手",
+    "alphaZoo": "因子库",
+    "settings": "设置",
+    "correlationMatrix": "相关性矩阵"
+  },
+  "sidebar": {
+    "sessions": "会话",
+    "newChat": "新建对话",
+    "noSessions": "暂无会话",
+    "collapse": "收起",
+    "expand": "展开",
+    "rename": "重命名",
+    "delete": "删除？",
+    "confirm": "确认",
+    "cancel": "取消",
+    "light": "浅色",
+    "dark": "深色"
+  },
+  "actions": {
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "confirm": "确认",
+    "upload": "上传",
+    "export": "导出",
+    "close": "关闭",
+    "goBack": "返回",
+    "loading": "加载中…",
+    "loadMore": "加载更多",
+    "search": "搜索",
+    "filter": "筛选",
+    "reset": "重置",
+    "copy": "复制",
+    "copied": "已复制"
+  },
+  "status": {
+    "loading": "加载中…",
+    "error": "错误",
+    "connected": "已连接",
+    "disconnected": "连接断开",
+    "reconnecting": "重连中…",
+    "saving": "保存中…",
+    "saved": "已保存",
+    "submitting": "提交中…"
+  },
+  "connection": {
+    "lost": "连接断开",
+    "lostReconnecting": "连接断开，正在重连（第 {{attempt}} 次）…"
+  },
+  "error": {
+    "somethingWentWrong": "出了点问题",
+    "executionFailed": "执行失败",
+    "unknownError": "未知错误",
+    "failedToSend": "发送消息失败，请重试。",
+    "authRequired": "远程 API 访问需要 API 密钥。请在设置中添加，或者在本地运行后端以使用本地访问。",
+    "settingsUnavailable": "设置不可用",
+    "cancelFailed": "取消失败",
+    "uploadFailed": "上传失败"
+  },
+  "toast": {
+    "connectionLost": "连接断开，正在重连…",
+    "connectionRestored": "连接已恢复",
+    "cancelSent": "已发送取消请求",
+    "cancelFailed": "取消失败",
+    "executionTimedOut": "执行超时，已自动停止",
+    "fileBlocked": "不允许上传可执行文件和压缩包",
+    "fileTooLarge": "文件大小超过 50 MB 限制"
+  },
+  "retry": {
+    "timeout": "执行超时。请尝试简化策略或减少资产数量。",
+    "apiFailed": "API 调用失败，请稍后重试。",
+    "executionFailed": "执行失败，点击重试。"
+  },
+  "metrics": {
+    "totalReturn": "总收益",
+    "annualReturn": "年化收益",
+    "sharpe": "夏普比率",
+    "maxDrawdown": "最大回撤",
+    "winRate": "胜率",
+    "tradeCount": "交易次数",
+    "finalValue": "终值",
+    "calmar": "卡玛比率",
+    "sortino": "索提诺比率",
+    "profitLossRatio": "盈亏比",
+    "maxConsecLoss": "最大连续亏损",
+    "avgHoldDays": "平均持仓天数",
+    "benchmarkReturn": "基准收益",
+    "excessReturn": "超额收益",
+    "informationRatio": "信息比率"
+  },
+  "tools": {
+    "loadSkill": "加载策略知识",
+    "writeFile": "生成代码",
+    "editFile": "编辑代码",
+    "readFile": "读取文件",
+    "runBacktest": "运行回测",
+    "bash": "执行命令",
+    "readUrl": "读取网页",
+    "readDocument": "读取文档",
+    "tradingConnections": "查看交易连接器",
+    "tradingSelectConnection": "选择交易连接器",
+    "tradingCheck": "检查交易连接器",
+    "tradingAccount": "读取连接器账户",
+    "tradingPositions": "读取连接器持仓",
+    "tradingOrders": "读取连接器订单",
+    "tradingQuote": "读取连接器报价",
+    "tradingHistory": "读取连接器历史",
+    "compact": "总结对话",
+    "createTask": "创建任务",
+    "updateTask": "更新任务",
+    "spawnSubagent": "启动子代理"
+  }
+}

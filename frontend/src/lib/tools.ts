@@ -24,6 +24,29 @@ export const TOOL_LABELS: Record<string, string> = {
   spawn_subagent: "Spawn sub-agent",
 };
 
+export const TOOL_I18N_KEYS: Record<string, string> = {
+  load_skill: "common:tools.loadSkill",
+  write_file: "common:tools.writeFile",
+  edit_file: "common:tools.editFile",
+  read_file: "common:tools.readFile",
+  run_backtest: "common:tools.runBacktest",
+  bash: "common:tools.bash",
+  read_url: "common:tools.readUrl",
+  read_document: "common:tools.readDocument",
+  trading_connections: "common:tools.tradingConnections",
+  trading_select_connection: "common:tools.tradingSelectConnection",
+  trading_check: "common:tools.tradingCheck",
+  trading_account: "common:tools.tradingAccount",
+  trading_positions: "common:tools.tradingPositions",
+  trading_orders: "common:tools.tradingOrders",
+  trading_quote: "common:tools.tradingQuote",
+  trading_history: "common:tools.tradingHistory",
+  compact: "common:tools.compact",
+  create_task: "common:tools.createTask",
+  update_task: "common:tools.updateTask",
+  spawn_subagent: "common:tools.spawnSubagent",
+};
+
 export function localizeToolName(tool: string, fallback?: string): string {
   if (tool in TOOL_LABELS) {
     return TOOL_LABELS[tool];

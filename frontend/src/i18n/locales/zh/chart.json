@@ -1,0 +1,14 @@
+{
+  "validation": {
+    "title": "验证",
+    "passed": "通过",
+    "failed": "失败",
+    "noResults": "无验证结果",
+    "status": "状态",
+    "check": "检查",
+    "details": "详情",
+    "passedAll": "所有检查已通过",
+    "failedCount": "{{count}} 项检查失败"
+  },
+  "noData": "无数据"
+}

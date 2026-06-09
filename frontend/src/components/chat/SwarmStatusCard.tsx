@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import {
   CheckCircle2,
   Circle,
@@ -83,6 +84,7 @@ function runTone(status: SwarmRunStatus["status"]): string {
 }
 
 export const SwarmStatusCard = memo(function SwarmStatusCard({ status }: Props) {
+  const { t } = useTranslation("agent");
   const done = status.agents.filter((agent) => ["done", "failed", "blocked", "cancelled"].includes(agent.status)).length;
   const total = status.agents.length;
   const layerTotal = Math.max(status.totalLayers, status.currentLayer + 1, 1);
@@ -123,12 +125,12 @@ export const SwarmStatusCard = memo(function SwarmStatusCard({ status }: Props) 
         <div className="mt-3 overflow-x-auto">
           <div className="min-w-[620px]">
             <div className="grid grid-cols-[10rem_7rem_9rem_5rem_4rem_minmax(0,1fr)] gap-2 border-b pb-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-              <span>Agent</span>
-              <span>Status</span>
-              <span>Tool</span>
-              <span className="text-right">Time</span>
-              <span className="text-right">Iters</span>
-              <span>Output</span>
+              <span>{t("swarm.headers.agent")}</span>
+              <span>{t("swarm.headers.status")}</span>
+              <span>{t("swarm.headers.tool")}</span>
+              <span className="text-right">{t("swarm.headers.time")}</span>
+              <span className="text-right">{t("swarm.headers.iters")}</span>
+              <span>{t("swarm.headers.output")}</span>
             </div>
             <div className="divide-y">
               {status.agents.map((agent) => (
@@ -162,7 +164,7 @@ export const SwarmStatusCard = memo(function SwarmStatusCard({ status }: Props) 
               ))}
               {status.agents.length === 0 && (
                 <div className="py-3 text-xs text-muted-foreground">
-                  Waiting for agent events...
+                  {t("swarm.waitingForEvents")}
                 </div>
               )}
             </div>

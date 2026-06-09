@@ -1,0 +1,55 @@
+{
+  "notFound": {
+    "title": "未找到运行记录",
+    "description": "运行目录可能已被删除，或者您的浏览器未配置 API 访问。如果远程访问，请检查设置中的 API 认证密钥是否已设置。",
+    "goBack": "返回"
+  },
+  "tabs": {
+    "chart": "图表",
+    "trades": "交易记录",
+    "validation": "验证",
+    "runCard": "运行卡片",
+    "code": "代码"
+  },
+  "chart": {
+    "noData": "无图表数据",
+    "noDataHint": "回测引擎可能未生成价格数据。请检查 artifacts/ 目录。",
+    "equityDrawdown": "权益曲线与回撤"
+  },
+  "trades": {
+    "noTrades": "无交易记录。",
+    "time": "时间",
+    "code": "代码",
+    "side": "方向",
+    "price": "价格",
+    "qty": "数量",
+    "reason": "原因"
+  },
+  "code": {
+    "noCode": "无代码文件。"
+  },
+  "runCard": {
+    "schema": "Schema",
+    "generated": "生成时间",
+    "dataSources": "数据源",
+    "warnings": "警告",
+    "noneRecorded": "未记录",
+    "backtestSummary": "回测摘要",
+    "noBacktestSummary": "无回测摘要记录。",
+    "reproducibility": "可复现性",
+    "noReproHashes": "无可复现性哈希记录。",
+    "metrics": "指标",
+    "noScalarMetrics": "无标量指标记录。",
+    "validation": "验证",
+    "noValidation": "无验证载荷记录。",
+    "artifactChecksums": "产出物校验",
+    "noArtifacts": "无产出物校验记录。",
+    "path": "路径",
+    "size": "大小",
+    "sha256": "SHA-256"
+  },
+  "download": {
+    "tradesCsv": "下载交易记录 CSV",
+    "metricsCsv": "下载指标 CSV"
+  }
+}

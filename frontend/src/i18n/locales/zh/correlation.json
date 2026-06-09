@@ -1,0 +1,10 @@
+{
+  "title": "相关性矩阵",
+  "assetCodes": "资产代码",
+  "assetCodesHint": "逗号分隔的代码，例如：BTC-USDT,ETH-USDT,AAPL,SPY",
+  "window": "窗口（天）",
+  "method": "方法",
+  "compute": "计算",
+  "computing": "加载中…",
+  "computeError": "计算相关性失败"
+}
