@@ -21,6 +21,7 @@ agent/.env
 !.claude/hooks.json
 CLAUDE.md
 .vscode/
+.idea/
 learn-claude-code-main/
 agent/sessions/
 agent/runs/
