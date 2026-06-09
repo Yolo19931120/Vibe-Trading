@@ -19,7 +19,7 @@
     "profitFactor": "Profit Factor",
     "avgWin": "Avg Win",
     "avgLoss": "Avg Loss",
-    "trades": "Trades",
+    "tradeCount": "Trades",
     "maxConsecLosses": "Max Consec. Losses",
     "exposureTime": "Exposure Time",
     "avgHoldingPeriod": "Avg Holding Period"

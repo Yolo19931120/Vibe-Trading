@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { I18nextProvider } from "react-i18next";
-import i18n from "@/i18n";
+import { wrapWithI18n } from "@/tests/helpers/i18n";
 import { MessageBubble } from "../MessageBubble";
 import type { AgentMessage } from "@/types/agent";
 
@@ -29,46 +28,42 @@ function makeMsg(overrides: Partial<AgentMessage> = {}): AgentMessage {
   };
 }
 
-function wrap(ui: React.ReactElement) {
-  return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
-}
-
 describe("MessageBubble", () => {
   describe("user messages", () => {
     it("renders user content in a styled bubble", () => {
-      render(wrap(<MessageBubble msg={makeMsg({ type: "user", content: "Hello agent!" })} />));
+      render(wrapWithI18n(<MessageBubble msg={makeMsg({ type: "user", content: "Hello agent!" })} />));
       expect(screen.getByText("Hello agent!")).toBeInTheDocument();
     });
 
     it("shows timestamp", () => {
-      render(wrap(<MessageBubble msg={makeMsg({ type: "user" })} />));
+      render(wrapWithI18n(<MessageBubble msg={makeMsg({ type: "user" })} />));
       expect(screen.getByText("14:30")).toBeInTheDocument();
     });
   });
 
   describe("answer messages", () => {
     it("renders markdown content", () => {
-      render(wrap(<MessageBubble msg={makeMsg({ type: "answer", content: "Here is the **analysis**" })} />));
+      render(wrapWithI18n(<MessageBubble msg={makeMsg({ type: "answer", content: "Here is the **analysis**" })} />));
       expect(screen.getByTestId("markdown")).toHaveTextContent("Here is the **analysis**");
     });
   });
 
   describe("error messages", () => {
     it("renders error content with danger styling", () => {
-      render(wrap(<MessageBubble msg={makeMsg({ type: "error", content: "Execution failed" })} />));
+      render(wrapWithI18n(<MessageBubble msg={makeMsg({ type: "error", content: "Execution failed" })} />));
       expect(screen.getByText("Execution failed")).toBeInTheDocument();
     });
 
     it("shows retry button when onRetry is provided", () => {
       const onRetry = vi.fn();
-      render(wrap(<MessageBubble msg={makeMsg({ type: "error", content: "Something broke" })} onRetry={onRetry} />));
+      render(wrapWithI18n(<MessageBubble msg={makeMsg({ type: "error", content: "Something broke" })} onRetry={onRetry} />));
       expect(screen.getByRole("button")).toBeInTheDocument();
     });
 
     it("calls onRetry when retry button is clicked", async () => {
       const onRetry = vi.fn();
       const msg = makeMsg({ type: "error", content: "Something broke" });
-      render(wrap(<MessageBubble msg={msg} onRetry={onRetry} />));
+      render(wrapWithI18n(<MessageBubble msg={msg} onRetry={onRetry} />));
 
       const user = userEvent.setup();
       await user.click(screen.getByRole("button"));
@@ -77,7 +72,7 @@ describe("MessageBubble", () => {
 
     it("shows timeout hint for timeout errors", () => {
       render(
-        wrap(<MessageBubble
+        wrapWithI18n(<MessageBubble
           msg={makeMsg({ type: "error", content: "Execution timed out after 600s" })}
           onRetry={vi.fn()}
         />),
@@ -88,7 +83,7 @@ describe("MessageBubble", () => {
 
   describe("run_complete messages", () => {
     it("renders RunCompleteCard when runId is present", () => {
-      render(wrap(<MessageBubble msg={makeMsg({ type: "run_complete", runId: "run-42" })} />));
+      render(wrapWithI18n(<MessageBubble msg={makeMsg({ type: "run_complete", runId: "run-42" })} />));
       expect(screen.getByTestId("run-complete-card")).toBeInTheDocument();
       expect(screen.getByText("Run: run-42")).toBeInTheDocument();
     });
@@ -96,12 +91,12 @@ describe("MessageBubble", () => {
 
   describe("fallback", () => {
     it("renders content for unknown message types", () => {
-      render(wrap(<MessageBubble msg={makeMsg({ type: "thinking", content: "analyzing data..." })} />));
+      render(wrapWithI18n(<MessageBubble msg={makeMsg({ type: "thinking", content: "analyzing data..." })} />));
       expect(screen.getByText("analyzing data...")).toBeInTheDocument();
     });
 
     it("renders null for empty content on unknown types", () => {
-      const { container } = render(wrap(<MessageBubble msg={makeMsg({ type: "thinking", content: "" })} />));
+      const { container } = render(wrapWithI18n(<MessageBubble msg={makeMsg({ type: "thinking", content: "" })} />));
       expect(container.innerHTML).toBe("");
     });
   });

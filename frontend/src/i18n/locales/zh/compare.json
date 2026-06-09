@@ -19,7 +19,7 @@
     "profitFactor": "盈亏因子",
     "avgWin": "平均盈利",
     "avgLoss": "平均亏损",
-    "trades": "交易次数",
+    "tradeCount": "交易次数",
     "maxConsecLosses": "最大连续亏损",
     "exposureTime": "持仓时间",
     "avgHoldingPeriod": "平均持仓周期"

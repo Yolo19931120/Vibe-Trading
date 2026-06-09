@@ -7,17 +7,14 @@ interface LocaleState {
 }
 
 function detectInitial(): "zh" | "en" {
-  const stored = localStorage.getItem("vibe-language");
-  if (stored === "zh" || stored === "en") return stored;
-  const nav = navigator.language;
-  if (nav.startsWith("zh")) return "zh";
+  // i18next-browser-languagedetector already resolved the language from
+  // localStorage ('vibe-language') → navigator.language during init.
+  const resolved = i18next.language?.split("-")[0];
+  if (resolved === "en") return "en";
   return "zh";
 }
 
 const initial = detectInitial();
-
-// Ensure i18next is in sync with detected language
-i18next.changeLanguage(initial);
 
 export const useLocaleStore = create<LocaleState>((set) => ({
   language: initial,

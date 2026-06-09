@@ -56,3 +56,8 @@ export function localizeToolName(tool: string, fallback?: string): string {
   }
   return tool;
 }
+
+/** Returns the i18n key for a tool name. Use with t() in components: `t(getToolI18nKey(tool))`. */
+export function getToolI18nKey(tool: string): string {
+  return TOOL_I18N_KEYS[tool] || `common:tools.${tool}`;
+}

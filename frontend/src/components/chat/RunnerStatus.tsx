@@ -89,7 +89,8 @@ function BrokerRow({
   }
 
   function fallbackAuthorizeInstruction(): string {
-    return "Run `vibe-trading connector list`, choose the broker profile, then run `vibe-trading connector authorize <profile>` from the desktop session that will hold the broker connection.";
+    // CLI command instructions are kept in English as they are terminal commands
+    return t("connector.fallbackInstruction");
   }
 
   const [busy, setBusy] = useState(false);

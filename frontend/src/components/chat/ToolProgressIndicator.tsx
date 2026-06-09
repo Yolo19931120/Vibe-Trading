@@ -3,7 +3,7 @@ import { Loader2, CheckCircle2, XCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { ProgressBar } from "@/components/chat/ProgressBar";
-import { localizeToolName } from "@/lib/tools";
+import { getToolI18nKey } from "@/lib/tools";
 import type { ToolCallEntry } from "@/types/agent";
 
 /* ---------- ETA tracking (per-tool) ---------- */
@@ -80,7 +80,7 @@ function ToolRow({ entry, stepIndex, totalSteps, isHeader, connector = "none", e
         ? <ProgressRing current={progress!.current!} total={progress!.total!} />
         : <Loader2 className="h-3 w-3 animate-spin text-primary shrink-0" />;
 
-  const localized = localizeToolName(entry.tool);
+  const localized = t(getToolI18nKey(entry.tool));
   const stepLabel = isHeader
     ? t("streaming.toolsRunning", { count: totalSteps })
     : t("streaming.step", { index: stepIndex }) + " · " + localized;

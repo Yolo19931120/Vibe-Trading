@@ -1,11 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { I18nextProvider } from "react-i18next";
-import i18n from "@/i18n";
+import { wrapWithI18n } from "@/tests/helpers/i18n";
 import { MetricsCard } from "../MetricsCard";
-
-function wrap(ui: React.ReactElement) {
-  return <I18nextProvider i18n={i18n}>{ui}</I18nextProvider>;
-}
 
 describe("MetricsCard", () => {
   const sampleMetrics = {
@@ -18,12 +13,12 @@ describe("MetricsCard", () => {
   };
 
   it("renders nothing when metrics is empty", () => {
-    const { container } = render(wrap(<MetricsCard metrics={{}} />));
+    const { container } = render(wrapWithI18n(<MetricsCard metrics={{}} />));
     expect(container.innerHTML).toBe("");
   });
 
   it("renders metric labels", () => {
-    render(wrap(<MetricsCard metrics={sampleMetrics} />));
+    render(wrapWithI18n(<MetricsCard metrics={sampleMetrics} />));
     expect(screen.getByText("Total Return")).toBeInTheDocument();
     expect(screen.getByText("Sharpe")).toBeInTheDocument();
     expect(screen.getByText("Max DD")).toBeInTheDocument();
@@ -31,7 +26,7 @@ describe("MetricsCard", () => {
   });
 
   it("renders formatted metric values", () => {
-    render(wrap(<MetricsCard metrics={sampleMetrics} />));
+    render(wrapWithI18n(<MetricsCard metrics={sampleMetrics} />));
     expect(screen.getByText("+12.34%")).toBeInTheDocument();
     expect(screen.getByText("+1.50")).toBeInTheDocument();
     expect(screen.getByText("42")).toBeInTheDocument();
@@ -45,7 +40,7 @@ describe("MetricsCard", () => {
     ];
     keys.forEach((k) => { manyMetrics[k] = 1; });
 
-    render(wrap(<MetricsCard metrics={manyMetrics} compact />));
+    render(wrapWithI18n(<MetricsCard metrics={manyMetrics} compact />));
 
     // Should show the first 6 labels from DISPLAY_ORDER that exist
     expect(screen.getByText("Total Return")).toBeInTheDocument();
@@ -55,19 +50,19 @@ describe("MetricsCard", () => {
   });
 
   it("ignores metrics not in DISPLAY_ORDER", () => {
-    const { container } = render(wrap(<MetricsCard metrics={{ unknown_metric: 999 }} />));
+    const { container } = render(wrapWithI18n(<MetricsCard metrics={{ unknown_metric: 999 }} />));
     expect(container.innerHTML).toBe("");
   });
 
   it("applies sentiment colors", () => {
-    render(wrap(<MetricsCard metrics={{ sharpe: 1.5 }} />));
+    render(wrapWithI18n(<MetricsCard metrics={{ sharpe: 1.5 }} />));
     // sharpe >= 1.0 → positive → text-success
     const el = screen.getByText("+1.50");
     expect(el.className).toContain("text-success");
   });
 
   it("applies negative sentiment for bad values", () => {
-    render(wrap(<MetricsCard metrics={{ max_drawdown: -0.3 }} />));
+    render(wrapWithI18n(<MetricsCard metrics={{ max_drawdown: -0.3 }} />));
     // max_drawdown <= -0.2 → negative → text-danger
     const el = screen.getByText("-30.00%");
     expect(el.className).toContain("text-danger");

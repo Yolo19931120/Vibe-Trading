@@ -108,6 +108,7 @@ function liveActionLabel(action: LiveAction): string {
 }
 
 function LiveActionChip({ action }: { action: LiveAction }) {
+  const { t } = useTranslation("agent");
   const { icon: Icon, tone } = liveActionStyle(action.kind);
   return (
     <div className="flex gap-3">
@@ -115,7 +116,7 @@ function LiveActionChip({ action }: { action: LiveAction }) {
       <div className="flex-1 min-w-0">
         <div className={["inline-flex max-w-full flex-wrap items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs", tone].join(" ")}>
           <Icon className="h-3 w-3 shrink-0" />
-          <span className="shrink-0 font-medium uppercase tracking-wide text-[10px]">RUNTIME</span>
+          <span className="shrink-0 font-medium uppercase tracking-wide text-[10px]">{t("connector.runtimeChip")}</span>
           <span className="shrink-0 font-medium">{liveActionLabel(action)}</span>
           {action.intent_normalized && (
             <span className="truncate text-foreground/80">· {action.intent_normalized}</span>
@@ -979,17 +980,17 @@ export function Agent() {
     for (const msg of messages) {
       const time = new Date(msg.timestamp).toLocaleString();
       if (msg.type === "user") {
-        lines.push(`## User (${time})`, ``, msg.content, ``);
+        lines.push(`## ${t("export.user")} (${time})`, ``, msg.content, ``);
       } else if (msg.type === "answer") {
-        lines.push(`## Assistant (${time})`, ``, msg.content, ``);
+        lines.push(`## ${t("export.assistant")} (${time})`, ``, msg.content, ``);
       } else if (msg.type === "error") {
-        lines.push(`## Error (${time})`, ``, msg.content, ``);
+        lines.push(`## ${t("export.error")} (${time})`, ``, msg.content, ``);
       } else if (msg.type === "tool_call") {
-        lines.push(`> Tool call: ${msg.tool || "unknown"}`, ``);
+        lines.push(`> ${t("export.toolCall")}: ${msg.tool || "unknown"}`, ``);
       } else if (msg.type === "swarm_status") {
-        lines.push(`> Swarm status: ${msg.swarmStatus?.preset || "swarm"} ${msg.swarmStatus?.status || ""}`, ``);
+        lines.push(`> ${t("export.swarmStatus")}: ${msg.swarmStatus?.preset || "swarm"} ${msg.swarmStatus?.status || ""}`, ``);
       } else if (msg.type === "run_complete") {
-        lines.push(`> Backtest complete: ${msg.runId || ""}`, ``);
+        lines.push(`> ${t("export.backtestComplete")}: ${msg.runId || ""}`, ``);
       }
     }
     const blob = new Blob([lines.join("\n")], { type: "text/markdown;charset=utf-8" });
@@ -1148,7 +1149,7 @@ export function Agent() {
               <AgentAvatar />
               <div className="flex-1 min-w-0 flex items-center gap-2 text-xs text-muted-foreground pt-1">
                 <Loader2 className="h-3 w-3 animate-spin text-primary shrink-0" />
-                <span>Agent is working…</span>
+                <span>{t("streaming.agentWorking")}</span>
               </div>
             </div>
           )}
@@ -1177,7 +1178,7 @@ export function Agent() {
               <div className="h-0.5 flex-1 rounded-full bg-primary/20 overflow-hidden">
                 <div className="h-full w-1/3 bg-primary rounded-full animate-[pulse-slide_2s_ease-in-out_infinite]" />
               </div>
-              <span className="text-[10px] text-muted-foreground shrink-0 tabular-nums">running</span>
+              <span className="text-[10px] text-muted-foreground shrink-0 tabular-nums">{t("connector.runningChip")}</span>
             </div>
           )}
 
@@ -1213,7 +1214,7 @@ export function Agent() {
             <div className="flex items-center gap-1">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-primary/10 text-primary text-xs font-medium">
                 <Target className="h-3 w-3" />
-                New Research Goal
+                {t("goal.createGoal")}
                 <button type="button" onClick={() => setGoalComposerActive(false)} className="hover:text-destructive transition-colors">
                   <X className="h-3 w-3" />
                 </button>
@@ -1235,9 +1236,9 @@ export function Agent() {
                 <span className="truncate text-muted-foreground">
                   {goalSnapshot.goal.ui_summary || goalSnapshot.goal.objective}
                 </span>
-                {goalProgress.metLabel && (
+                {goalProgress.total > 0 && (
                   <span className="shrink-0 font-mono text-[11px] text-emerald-600 dark:text-emerald-400">
-                    {goalProgress.metLabel}
+                    {t("goal.met", { met: goalProgress.met, total: goalProgress.total })}
                   </span>
                 )}
                 {goalProgress.evidenceTotal > 0 && (
@@ -1359,7 +1360,7 @@ export function Agent() {
                       className="inline-flex items-center gap-1 rounded-lg border px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground disabled:opacity-40"
                     >
                       <Play className="h-3 w-3" />
-                      Continue
+                      {t("goal.continueGoal")}
                     </button>
                     <button
                       type="button"
@@ -1368,7 +1369,7 @@ export function Agent() {
                       className="inline-flex items-center gap-1 rounded-lg border px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground disabled:opacity-40"
                     >
                       <Pencil className="h-3 w-3" />
-                      Edit
+                      {t("goal.editGoal")}
                     </button>
                     <button
                       type="button"
@@ -1376,7 +1377,7 @@ export function Agent() {
                       className="inline-flex items-center gap-1 rounded-lg border px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:border-destructive/40 hover:text-destructive"
                     >
                       <X className="h-3 w-3" />
-                      Cancel Goal
+                      {t("goal.cancelGoal")}
                     </button>
                   </div>
                 </div>
@@ -1407,7 +1408,7 @@ export function Agent() {
           {uploading && (
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
               <Loader2 className="h-3 w-3 animate-spin" />
-              Uploading...
+              {t("input.uploading")}
             </div>
           )}
           {/* Persistent kill switch — distinct from the per-turn Stop button
@@ -1425,10 +1426,10 @@ export function Agent() {
                   onClick={handleHaltLive}
                   disabled={halting}
                   className="inline-flex items-center gap-1.5 rounded-lg border border-destructive/40 bg-destructive/5 px-2.5 py-1 text-xs font-medium text-destructive transition-colors hover:bg-destructive/10 disabled:opacity-40"
-                  title="Instantly halt connector runtime activity"
+                  title={t("input.killSwitch")}
                 >
                   {halting ? <Loader2 className="h-3 w-3 animate-spin" /> : <OctagonX className="h-3 w-3" />}
-                  Halt connector runtime
+                  {t("input.killSwitch")}
                 </button>
               )}
             </div>
@@ -1441,7 +1442,7 @@ export function Agent() {
                 onClick={() => setShowUploadMenu(prev => !prev)}
                 disabled={status === "streaming" || uploading}
                 className="w-9 h-9 rounded-full border flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted transition-colors disabled:opacity-40 shrink-0"
-                title="More options"
+                title={t("input.moreOptions")}
               >
                 <Plus className="h-4 w-4" />
               </button>
@@ -1453,7 +1454,7 @@ export function Agent() {
                     className="w-full px-3 py-2 text-left text-sm hover:bg-muted transition-colors flex items-center gap-2"
                   >
                     <Paperclip className="h-4 w-4" />
-                    Upload PDF document
+                    {t("input.attachFile")}
                   </button>
                   <div className="border-t my-1" />
                   <button
@@ -1467,20 +1468,20 @@ export function Agent() {
                     className="w-full px-3 py-2 text-left text-sm hover:bg-muted transition-colors flex items-center gap-2"
                   >
                     <Target className="h-4 w-4" />
-                    Research Goal
+                    {t("goal.createGoal")}
                   </button>
                   <button
                     type="button"
                     onClick={() => {
                       setShowUploadMenu(false);
                       setGoalComposerActive(false);
-                      setSwarmPreset({ name: "auto", title: "Agent Swarm" });
+                      setSwarmPreset({ name: "auto", title: t("input.swarmMode") });
                       inputRef.current?.focus();
                     }}
                     className="w-full px-3 py-2 text-left text-sm hover:bg-muted transition-colors flex items-center gap-2"
                   >
                     <Users className="h-4 w-4" />
-                    Agent Swarm
+                    {t("input.swarmMode")}
                   </button>
                   <div className="border-t my-1" />
                   <button
@@ -1492,7 +1493,7 @@ export function Agent() {
                     className="w-full px-3 py-2 text-left text-sm hover:bg-muted transition-colors flex items-center gap-2"
                   >
                     <Landmark className="h-4 w-4" />
-                    Check Trading Connector
+                    {t("input.checkConnector")}
                   </button>
                   <button
                     type="button"
@@ -1503,7 +1504,7 @@ export function Agent() {
                     className="w-full px-3 py-2 text-left text-sm hover:bg-muted transition-colors flex items-center gap-2"
                   >
                     <Landmark className="h-4 w-4" />
-                    Analyze Connector Portfolio
+                    {t("input.analyzePortfolio")}
                   </button>
                 </div>
               )}
@@ -1547,11 +1548,7 @@ export function Agent() {
                   runPrompt(input.trim());
                 }
               }}
-              placeholder={
-                goalComposerActive
-                  ? "Describe the research goal to attach to this session"
-                  : "e.g. Create a dual MA crossover strategy for 000001.SZ, backtest 2024"
-              }
+              placeholder={t("input.placeholder")}
               className="flex-1 px-4 py-2.5 rounded-xl border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow resize-none max-h-32 overflow-y-auto"
               disabled={status === "streaming"}
             />
@@ -1560,7 +1557,7 @@ export function Agent() {
                 type="button"
                 onClick={handleExport}
                 className="px-3 py-2.5 rounded-xl border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                title="Export chat"
+                title={t("common:actions.export")}
               >
                 <Download className="h-4 w-4" />
               </button>
@@ -1570,7 +1567,7 @@ export function Agent() {
                 type="button"
                 onClick={handleCancel}
                 className="px-4 py-2.5 rounded-xl bg-destructive text-destructive-foreground text-sm font-medium hover:opacity-90 transition-opacity"
-                title="Stop generation"
+                title={t("input.stop")}
               >
                 <Square className="h-4 w-4" />
               </button>
@@ -1579,6 +1576,7 @@ export function Agent() {
                 type="submit"
                 disabled={goalComposerActive ? !input.trim() : (!input.trim() && !attachment)}
                 className="px-4 py-2.5 rounded-xl bg-primary text-primary-foreground text-sm font-medium disabled:opacity-40 hover:opacity-90 transition-opacity"
+                title={t("input.send")}
               >
                 <Send className="h-4 w-4" />
               </button>

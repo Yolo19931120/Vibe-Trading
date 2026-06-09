@@ -11,7 +11,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { ProgressBar } from "@/components/chat/ProgressBar";
-import { localizeToolName } from "@/lib/tools";
+import { getToolI18nKey } from "@/lib/tools";
 import type { SwarmAgentDisplayStatus, SwarmRunStatus } from "@/types/agent";
 
 interface Props {
@@ -149,7 +149,7 @@ export const SwarmStatusCard = memo(function SwarmStatusCard({ status }: Props) 
                     </span>
                   </div>
                   <div className="truncate font-mono text-[11px] text-muted-foreground" title={agent.tool || ""}>
-                    {agent.tool ? localizeToolName(agent.tool, agent.tool) : "-"}
+                    {agent.tool ? t(getToolI18nKey(agent.tool)) : "-"}
                   </div>
                   <div className="text-right font-mono text-[11px] text-muted-foreground">
                     {formatElapsed(agent.elapsed_s)}
