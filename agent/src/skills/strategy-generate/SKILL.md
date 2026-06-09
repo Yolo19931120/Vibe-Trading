@@ -112,7 +112,7 @@ Self-check after writing `signal_engine.py`:
 
 ```json
 {
-  "source": "auto",
+  "source": "tushare",
   "codes": ["000001.SZ"],
   "start_date": "2016-03-18",
   "end_date": "2026-03-18",
@@ -128,7 +128,10 @@ Self-check after writing `signal_engine.py`:
 }
 ```
 
-- `source`: `"auto"` (recommended, auto-select by code format) / `"tushare"` / `"yfinance"` / `"okx"` / `"akshare"` / `"ccxt"`
+- `source`: `"tushare"` / `"yfinance"` / `"okx"` / `"akshare"` / `"ccxt"` / `"auto"`
+  - **A-shares (A股)**: Always use `"tushare"` when `TUSHARE_TOKEN` is configured — it's the most reliable source. Falls back to `mootdx` → `akshare` if unavailable.
+  - **HK/US stocks**: Use `"auto"` (yfinance → akshare fallback)
+  - **Crypto**: Use `"auto"` (okx → ccxt fallback)
   - `"auto"` supports mixed instruments. For example, `["000001.SZ", "BTC-USDT"]` will be automatically routed to `tushare` and `okx`
   - Futures codes (e.g. `"IF2406.CFFEX"`, `"ESZ4"`) and forex pairs (e.g. `"EUR/USD"`) are also auto-routed
 - `interval`: candlestick interval, default `"1D"`. Supported values: `"1m"` / `"5m"` / `"15m"` / `"30m"` / `"1H"` / `"4H"` / `"1D"`
