@@ -8,9 +8,16 @@ import { api, type SessionItem } from "@/lib/api";
 import { useAgentStore } from "@/stores/agent";
 import { ConnectionBanner } from "@/components/layout/ConnectionBanner";
 import { LanguageSwitcher } from "@/components/common/LanguageSwitcher";
+import { Tooltip } from "@/components/common/Tooltip";
 
 // Bump on each release; one place keeps the footer in sync with package.json.
 const APP_VERSION = "v0.1.9";
+
+/** Truncate a string to at most `max` characters + 6-dot ellipsis. */
+function truncateTitle(text: string, max = 8): string {
+  if (text.length <= max) return text;
+  return text.slice(0, max) + "......";
+}
 
 const NAV = [
   { to: "/", icon: BarChart3, label: "nav.home" },
@@ -40,7 +47,16 @@ export function Layout() {
 
   const loadSessions = () => {
     api.listSessions()
-      .then((list) => setSessions(Array.isArray(list) ? list : []))
+      .then((list) => {
+        const sorted = Array.isArray(list)
+          ? [...list].sort((a, b) => {
+              const da = a.updated_at ?? a.created_at ?? "";
+              const db = b.updated_at ?? b.created_at ?? "";
+              return db.localeCompare(da); // most recent first
+            })
+          : [];
+        setSessions(sorted);
+      })
       .catch(() => {})
       .finally(() => setSessionsLoading(false));
   };
@@ -161,7 +177,6 @@ export function Layout() {
                             ? "border-l-primary bg-primary/10 text-primary font-medium"
                             : "border-l-transparent text-muted-foreground hover:bg-muted hover:text-foreground"
                         )}
-                        title={s.title || s.session_id}
                       >
                         <span className="flex items-center gap-1.5">
                           {streamingSessionId === s.session_id ? (
@@ -172,7 +187,9 @@ export function Layout() {
                               isActive ? "bg-primary/70" : "bg-muted-foreground/40"
                             )} />
                           )}
-                          {s.title || s.session_id.slice(0, 16)}
+                          <Tooltip content={s.title || s.session_id}>
+                            {truncateTitle(s.title || s.session_id)}
+                          </Tooltip>
                         </span>
                       </Link>
                     )}
